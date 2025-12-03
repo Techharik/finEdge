@@ -7,7 +7,7 @@ A TypeScript-based project built by **Techharik** — finEdge is (brief descript
 ## 📁 Project Structure
 
 ```
-
+```
 finEdge/
 ├── data/               # Data files / seeds / sample data
 ├── monitor-logs/       # Logging / monitoring output
@@ -18,7 +18,8 @@ finEdge/
 ├── tsconfig.build.json
 └── package-lock.json
 
-````
+```
+```
 
 - `src/` — contains the core application logic (TypeScript).  
 - `data/` — directory to store data files, configuration, or initial data sets.  
@@ -47,7 +48,7 @@ npm run build   # (or equivalent build command)
 To run (adjust as per actual run command):
 
 ```bash
-npm start       # or `node build/index.js`, etc.
+npm run start       # or `node build/index.js`, etc.
 ```
 
 ## 🎯 What is finEdge?
@@ -68,9 +69,11 @@ npm start       # or `node build/index.js`, etc.
 
 1. Clone the repo.
 2. Run `npm install`.
-3. Build (if required): `npm run build`.
-4. Run the application: `npm start`.
-5. (If there is config or environment variables, mention them here.)
+3. Add the `.env ref` from `.env.example`
+4. Run `npm run dev`.
+5. Build (if required): `npm run build`.
+6. Run the application: `npm start`.
+7. (If there is config or environment variables, mention them here.)
 
 ## 🧪 Examples / Quick Start
 
@@ -91,10 +94,6 @@ If you wish to contribute:
 
 Please follow the code style and maintain TypeScript types / formatting.
 
-## 📄 License
 
-(Add a license here, if you plan to open-source. e.g., MIT, Apache-2.0, etc.)
 
-```
-::contentReference[oaicite:0]{index=0}
-```
+
