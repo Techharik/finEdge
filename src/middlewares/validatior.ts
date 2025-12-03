@@ -8,6 +8,17 @@ export const RegisterUserValidation = z.object({
 })
 
 export const loginValidation = z.object({
-    emai: z.email("Invalid Email Address"),
+    email: z.email("Invalid Email Address"),
     password: z.string().min(6, "password must be atleast 6 characters")
 })
+
+export const createTransactionValidation = z.object({
+    userId: z.string('UserId must exists'),
+    type: z.enum(["income", "expense"]),
+    category: z.string('Category is non-empty field'),
+    amount: z.number('Amount is non-empty field'),
+    date: z.date('Vaild date string'),
+    description: z.string().optional()
+});
+
+
