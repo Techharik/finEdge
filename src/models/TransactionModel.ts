@@ -28,9 +28,9 @@ export async function getAllTransationsUserId(userId: string): Promise<Transacti
     const transactions = data.transactions.filter(t => t.userId === userId)
     return transactions;
 }
-export async function updateTransaction(id: string, updates: Partial<Transaction>): Promise<Transaction | null> {
+export async function updateTransaction(id: string, userId: string, updates: Partial<Transaction>): Promise<Transaction | null> {
     const data = await readData();
-    const index = data.transactions.findIndex(t => t.id === id);
+    const index = data.transactions.findIndex(t => t.id === id && t.userId === userId);
     if (index === -1) {
         return null;
     }

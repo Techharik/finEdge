@@ -1,5 +1,5 @@
-import { createTransaction, deleteTransaction, getTransactionById } from "../models/TransactionModel";
-import { Transaction } from "../types/schema";
+import { createTransaction, deleteTransaction, getAllTransationsUserId, getTransactionById, updateTransaction } from "../models/TransactionModel";
+import { Summary, Transaction } from "../types/schema";
 import { NotFoundError, ValidationError } from "../utils/errorHandler";
 import { v4 as uuidv4 } from 'uuid';
 
@@ -34,4 +34,35 @@ export const deleteTransationServices = async (data: any) => {
 
     const result = await deleteTransaction(id);
     return result
+}
+
+export const updateTransactionServices = async (data: any) => {
+    const { id, userId, body } = data;
+
+    if (!id || !userId) {
+        throw new ValidationError('Invalid id and userId')
+    }
+    if (body.amount !== undefined && body.amount <= 0) {
+        throw new ValidationError('Amount must be creater than 0')
+    }
+    const transaction = await updateTransaction(id, userId, { ...body })
+    return transaction
+}
+
+export async function getSummary(userId?: string): Promise<Summary> {
+    if (!userId) {
+        throw new ValidationError('userId not existed')
+    }
+    const transactions = await getAllTransationsUserId(userId);
+
+    const totalIncome = transactions.filter((t) => t.type === "income").reduce((sum, t) => sum + t.amount, 0);
+
+    const totalExpenses = transactions.filter((t) => t.type === "expense").reduce((sum, t) => sum + t.amount, 0);
+
+    return {
+        totalIncome,
+        totalExpenses,
+        balance: totalIncome - totalExpenses,
+        transactionCount: transactions.length,
+    };
 }
