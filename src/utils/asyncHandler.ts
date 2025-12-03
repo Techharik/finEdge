@@ -1,7 +1,6 @@
 import { Request, Response, NextFunction } from "express";
-import { AppError } from "./errorHandler";
-import { success } from "zod";
-import { logger } from "../middlewares/logger";
+import { AppError } from "./errorHandler.js";
+import { logger } from "../middlewares/logger.js";
 
 type AsyncHandler = (req: Request, res: Response, next: NextFunction) => Promise<any>
 

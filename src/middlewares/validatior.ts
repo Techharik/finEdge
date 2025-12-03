@@ -11,14 +11,13 @@ export const loginValidation = z.object({
     email: z.email("Invalid Email Address"),
     password: z.string().min(6, "password must be atleast 6 characters")
 })
-
 export const createTransactionValidation = z.object({
-    userId: z.string('UserId must exists'),
+    userId: z.string().min(1, 'UserId must exist'),
     type: z.enum(["income", "expense"]),
-    category: z.string('Category is non-empty field'),
-    amount: z.number('Amount is non-empty field'),
-    date: z.date('Vaild date string'),
+    category: z.string().min(1, 'Category is required'),
+    amount: z.number().min(1, 'Amount must be greater than 0'),
     description: z.string().optional()
 });
+
 
 

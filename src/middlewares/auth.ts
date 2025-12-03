@@ -1,8 +1,8 @@
 import { NextFunction, Request, Response } from "express";
 
 import jwt from "jsonwebtoken"
-import { JWT_SECRET } from "../config/config";
-import { NotFoundError } from "../utils/errorHandler";
+import { JWT_SECRET } from "../config/config.js";
+import { NotFoundError } from "../utils/errorHandler.js";
 
 export function authMiddleware(req: Request, res: Response, next: NextFunction) {
     // Try Authorization header first

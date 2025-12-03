@@ -1,10 +1,9 @@
 import { Request, Response } from 'express';
-import * as TransactionService from '../services/TransactionServices';
-import { cacheService } from '../utils/cache';
-import { Summary } from '../types/schema';
-import { asyncHandler } from '../utils/asyncHandler';
-import { getMonthlyTrends, getTotalSummary } from '../services/summaryServices';
-import { NotFoundError } from '../utils/errorHandler';
+import { cacheService } from '../utils/cache.js';
+import { Summary } from '../types/schema.js';
+import { asyncHandler } from '../utils/asyncHandler.js';
+import { getMonthlyTrends, getTotalSummary } from '../services/summaryServices.js';
+import { NotFoundError } from '../utils/errorHandler.js';
 
 const CACHE_TTL = 60;
 
@@ -16,7 +15,7 @@ export const getSummary = asyncHandler(async (req: Request, res: Response): Prom
     const cached = cacheService.get<Summary>(cacheKey);
     if (cached) {
         res.status(200).json({
-            success: true,
+            status: "success",
             data: cached,
             cached: true
         });
@@ -45,7 +44,7 @@ export const summaryTrends = asyncHandler(async (req: Request, res: Response) =>
     const cached = cacheService.get<Summary>(cacheKey);
     if (cached) {
         res.status(200).json({
-            success: true,
+            status: "success",
             data: cached,
             cached: true
         });

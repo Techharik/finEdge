@@ -1,0 +1,8 @@
+{"code":400,"level":"error","message":"Invalid input: expected object, received undefined","service":"event-service"}
+{"code":400,"level":"error","message":"Vaild date string","service":"event-service"}
+{"code":400,"level":"error","message":"Type must be either income or expense","service":"event-service"}
+{"code":400,"level":"error","message":"Type must be either income or expense","service":"event-service"}
+{"code":400,"level":"error","message":"Type must be either income or expense","service":"event-service"}
+{"code":400,"level":"error","message":"Type must be either income or expense","service":"event-service"}
+{"code":400,"level":"error","message":"Type must be either income or expense","service":"event-service"}
+{"code":404,"level":"error","message":"Transaction is not exists","service":"event-service"}

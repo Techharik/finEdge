@@ -1,5 +1,5 @@
 import { Router } from "express";
-import * as userController from '../controllers/UserController'
+import * as userController from '../controllers/UserController.js'
 const app = Router();
 
 app.post('/register', userController.register)

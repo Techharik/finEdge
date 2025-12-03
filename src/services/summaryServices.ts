@@ -1,6 +1,6 @@
-import { getAllTransationsUserId } from "../models/TransactionModel";
-import { Summary } from "../types/schema";
-import { ValidationError } from "../utils/errorHandler";
+import { getAllTransationsUserId } from "../models/TransactionModel.js";
+import { Summary } from "../types/schema.js";
+import { ValidationError } from "../utils/errorHandler.js";
 
 export async function getMonthlyTrends(userId: string) {
 

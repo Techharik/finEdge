@@ -1,0 +1,41 @@
+{
+  "users": [
+    {
+      "id": "d0150173-6245-451a-b543-09ad12ca116e",
+      "name": "hari",
+      "email": "hari@gmail.com",
+      "password": "$2b$10$WNNQM5AvIZ6PEOr4BpxWN.PGX5F71/nX0ush2qFuZMVScQwMrnDuW",
+      "createdAt": "2025-12-03T10:23:25.403Z"
+    }
+  ],
+  "transactions": [
+    {
+      "id": "9968322e-dcd9-44ce-85d2-ae28861f0e1e",
+      "userId": "d0150173-6245-451a-b543-09ad12ca116e",
+      "type": "expense",
+      "amount": 2000,
+      "category": "saloon",
+      "date": "2025-12-03T10:43:12.642Z",
+      "description": "This is for ai category"
+    },
+    {
+      "id": "10cc65b9-f2c4-4f77-9ed2-fb024915fe24",
+      "userId": "d0150173-6245-451a-b543-09ad12ca116e",
+      "type": "income",
+      "amount": 200,
+      "category": "food",
+      "date": "2025-12-03T10:43:30.146Z",
+      "description": "This is for food category"
+    },
+    {
+      "id": "2a3f87df-4452-44e6-9530-bac1df69afe5",
+      "userId": "d0150173-6245-451a-b543-09ad12ca116e",
+      "type": "expense",
+      "amount": 200,
+      "category": "food",
+      "date": "2025-12-03T10:43:41.865Z",
+      "description": "This is for food category"
+    }
+  ],
+  "budgets": []
+}

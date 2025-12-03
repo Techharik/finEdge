@@ -1,6 +1,6 @@
 import { Router } from "express";
-import { authMiddleware } from "../middlewares/auth";
-import { getSummary, summaryTrends } from "../controllers/SummaryController";
+import { authMiddleware } from "../middlewares/auth.js";
+import { getSummary, summaryTrends } from "../controllers/SummaryController.js";
 
 const app = Router();
 

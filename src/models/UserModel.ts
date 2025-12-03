@@ -1,5 +1,5 @@
-import { User } from "../types/schema";
-import { readData, writeData } from "./InitialModel";
+import { User } from "../types/schema.js";
+import { readData, writeData } from "./InitialModel.js";
 
 
 export async function createUser(user: User): Promise<User> {

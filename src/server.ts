@@ -1,5 +1,5 @@
-import { app } from './index';
-import { PORT } from './config/config';
+import { app } from './index.js';
+import { PORT } from './config/config.js';
 
 
 

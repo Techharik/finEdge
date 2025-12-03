@@ -1,10 +1,9 @@
 import { Request, Response } from "express"
-import { createTransactionValidation } from "../middlewares/validatior"
-import { ValidationError } from "../utils/errorHandler";
-import { getAllTransationsUserId, getTransactionById } from "../models/TransactionModel";
-import { v4 as uuidv4 } from 'uuid';
-import { createTransationServices, deleteTransationServices, updateTransactionServices } from "../services/TransactionServices";
-import { asyncHandler } from "../utils/asyncHandler";
+import { createTransactionValidation } from "../middlewares/validatior.js"
+import { NotFoundError, ValidationError } from "../utils/errorHandler.js";
+import { getAllTransationsUserId, getTransactionById } from "../models/TransactionModel.js";
+import { createTransationServices, deleteTransationServices, updateTransactionServices } from "../services/TransactionServices.js";
+import { asyncHandler } from "../utils/asyncHandler.js";
 
 
 const createTransactionController = asyncHandler(async (req: Request, res: Response) => {
@@ -12,10 +11,11 @@ const createTransactionController = asyncHandler(async (req: Request, res: Respo
         ...req.body,
         userId: req.user?.id
     };
-
+    console.log(data)
     const dto = createTransactionValidation.safeParse(data);
     if (!dto.success) {
         const msg = dto.error.issues[0].message
+        console.log(msg)
         throw new ValidationError(msg)
     }
 
@@ -62,7 +62,10 @@ const getTransactionSingle = asyncHandler(async (req: Request, res: Response) =>
     const userId = req.user?.id
 
     const transaction = await getTransactionById(id, userId);
-    res.status(200).json({
+    if (!transaction) {
+        throw new NotFoundError('Transaction is not exists')
+    }
+    return res.status(200).json({
         status: 'success',
         data: transaction
     })

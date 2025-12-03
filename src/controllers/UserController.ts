@@ -1,8 +1,8 @@
 import { Request, Response, NextFunction } from "express"
-import { asyncHandler } from "../utils/asyncHandler"
-import { loginValidation, RegisterUserValidation } from "../middlewares/validatior";
-import { ValidationError } from "../utils/errorHandler";
-import { loginUserService, registerUserService } from "../services/UserServices";
+import { asyncHandler } from "../utils/asyncHandler.js"
+import { loginValidation, RegisterUserValidation } from "../middlewares/validatior.js";
+import { ValidationError } from "../utils/errorHandler.js";
+import { loginUserService, registerUserService } from "../services/UserServices.js";
 
 
 const register = asyncHandler(async (req: Request, res: Response) => {
@@ -14,7 +14,7 @@ const register = asyncHandler(async (req: Request, res: Response) => {
         const msg = dto.error.issues[0].message
         throw new ValidationError(msg)
     }
-    const result = await registerUserService(dto)
+    const result = await registerUserService(dto.data)
 
     return res.status(200).json({
         status: 'success',
@@ -31,7 +31,7 @@ const login = asyncHandler(async (req: Request, res: Response) => {
         throw new ValidationError(msg)
     }
 
-    const result = await loginUserService(dto);
+    const result = await loginUserService(dto.data);
 
     return res.status(200).json({
         status: "success",

@@ -1,5 +1,5 @@
-import { Transaction } from "../types/schema";
-import { readData, writeData } from "./InitialModel";
+import { Transaction } from "../types/schema.js";
+import { readData, writeData } from "./InitialModel.js";
 
 
 

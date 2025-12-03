@@ -1,11 +1,9 @@
 import jwt from "jsonwebtoken"
-import { JWT_TIME, JWT_SECRET } from "../config/config";
+import { JWT_TIME, JWT_SECRET } from "../config/config.js";
 
 export const createToken = (user: any) => {
     if (!JWT_SECRET) return undefined;
     if (!JWT_TIME) return undefined;
-
-
     const token = jwt.sign(
         {
             id: user.id,

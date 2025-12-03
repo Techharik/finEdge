@@ -21,7 +21,7 @@
     /* ---- ESM BEHAVIOR ---- */
     "isolatedModules": true, // Required for ts-node-esm & ESM build
     /* ---- DEV ONLY ---- */
-    "sourceMap": true,
+    "sourceMap": false,
     /* ---- OPTIONAL ALIASES ---- */
     // "baseUrl": ".",
     // "paths": { "@/*": ["src/*"] },

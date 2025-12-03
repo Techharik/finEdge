@@ -1,6 +1,6 @@
-import { createTransaction, deleteTransaction, getAllTransationsUserId, getTransactionById, updateTransaction } from "../models/TransactionModel";
-import { Summary, Transaction } from "../types/schema";
-import { NotFoundError, ValidationError } from "../utils/errorHandler";
+import { createTransaction, deleteTransaction, getTransactionById, updateTransaction } from "../models/TransactionModel.js";
+import { Summary, Transaction } from "../types/schema.js";
+import { NotFoundError, ValidationError } from "../utils/errorHandler.js";
 import { v4 as uuidv4 } from 'uuid';
 
 
@@ -9,7 +9,7 @@ export const createTransationServices = async (data: any) => {
     if (amount <= 0) {
         throw new ValidationError('Amount should be greater than 0');
     }
-    if (type! == "income" && type !== "expense") {
+    if (type !== "income" && type !== "expense") {
         throw new ValidationError('Type must be either income or expense')
     }
     const newTransaction: Transaction = {

@@ -1,13 +1,13 @@
 import express, { NextFunction, type Request, type Response } from "express";
 import 'dotenv/config'
-import { errorHandler } from "./middlewares/error";
+import { errorHandler } from "./middlewares/error.js";
 import cors from "cors";
-import { requestLogger } from "./middlewares/logger";
-import userRoutes from './routes/userRoutes'
-import transaction from './routes/transactionRoutes'
-import summary from './routes/summaryRoutes'
+import { requestLogger } from "./middlewares/logger.js";
+import userRoutes from './routes/userRoutes.js'
+import transaction from './routes/transactionRoutes.js'
+import summary from './routes/summaryRoutes.js'
 import { rateLimit } from 'express-rate-limit'
-import { NotFoundError } from "./utils/errorHandler";
+import { NotFoundError } from "./utils/errorHandler.js";
 
 export const app = express();
 
