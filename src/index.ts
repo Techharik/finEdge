@@ -3,7 +3,9 @@ import 'dotenv/config'
 import { errorHandler } from "./middlewares/error";
 import cors from "cors";
 import { requestLogger } from "./middlewares/logger";
-// import userRoutes from './routes/userRoutes'
+import userRoutes from './routes/userRoutes'
+import transaction from './routes/transactionRoutes'
+import summary from './routes/summaryRoutes'
 import { rateLimit } from 'express-rate-limit'
 import { NotFoundError } from "./utils/errorHandler";
 
@@ -25,8 +27,9 @@ app.use(limiter)
 app.use(requestLogger)
 
 //routes
-// app.use("/api/v1/user/", userRoutes)
-// app.use("/api/v1/event/", eventRoutes)
+app.use("/api/v1/user/", userRoutes)
+app.use("/api/v1/transaction/", transaction)
+app.use("/api/v1/analytics/", summary)
 
 
 app.get('/', (req: Request, res: Response) => {

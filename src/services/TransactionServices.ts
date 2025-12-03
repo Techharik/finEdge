@@ -49,20 +49,3 @@ export const updateTransactionServices = async (data: any) => {
     return transaction
 }
 
-export async function getSummary(userId?: string): Promise<Summary> {
-    if (!userId) {
-        throw new ValidationError('userId not existed')
-    }
-    const transactions = await getAllTransationsUserId(userId);
-
-    const totalIncome = transactions.filter((t) => t.type === "income").reduce((sum, t) => sum + t.amount, 0);
-
-    const totalExpenses = transactions.filter((t) => t.type === "expense").reduce((sum, t) => sum + t.amount, 0);
-
-    return {
-        totalIncome,
-        totalExpenses,
-        balance: totalIncome - totalExpenses,
-        transactionCount: transactions.length,
-    };
-}

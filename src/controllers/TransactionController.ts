@@ -28,10 +28,28 @@ const createTransactionController = asyncHandler(async (req: Request, res: Respo
 
 const getAllTransaction = asyncHandler(async (req: Request, res: Response) => {
     const useId = req.user?.id;
+    const { type, min, max, cate } = req.query;
+
     if (!useId) {
         throw new Error('user not found')
     }
-    const transaction = await getAllTransationsUserId(useId);
+    let transaction = await getAllTransationsUserId(useId);
+
+    if (type) {
+        transaction = transaction.filter(t => t.type === type)
+    };
+
+    if (min) {
+        transaction = transaction.filter(t => t.amount >= Number(min))
+    }
+    if (max) {
+        transaction = transaction.filter(t => t.amount <= Number(max))
+    }
+
+    if (cate) {
+        transaction = transaction.filter(t => t.category === cate)
+    }
+
     return res.status(200).json({
         status: 'success',
         data: transaction
@@ -61,6 +79,8 @@ const deleteTransaction = asyncHandler(async (req: Request, res: Response) => {
         data: result
     })
 });
+
+
 const updateTransaction = asyncHandler(async (req: Request, res: Response) => {
     const id = req.params.id;
     const userId = req.user?.id

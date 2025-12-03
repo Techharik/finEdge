@@ -3,6 +3,8 @@ import * as TransactionService from '../services/TransactionServices';
 import { cacheService } from '../utils/cache';
 import { Summary } from '../types/schema';
 import { asyncHandler } from '../utils/asyncHandler';
+import { getMonthlyTrends, getTotalSummary } from '../services/summaryServices';
+import { NotFoundError } from '../utils/errorHandler';
 
 const CACHE_TTL = 60;
 
@@ -21,7 +23,7 @@ export const getSummary = asyncHandler(async (req: Request, res: Response): Prom
         return;
     }
 
-    const summary = await TransactionService.getSummary(userId);
+    const summary = await getTotalSummary(userId);
     cacheService.set(cacheKey, summary, CACHE_TTL);
 
     res.status(200).json({
@@ -30,4 +32,18 @@ export const getSummary = asyncHandler(async (req: Request, res: Response): Prom
         cached: false
     });
 
+})
+
+export const summaryTrends = asyncHandler(async (req: Request, res: Response) => {
+    const userId = req.user?.id;
+
+    if (!userId) {
+        throw new NotFoundError('userId not found')
+    }
+    const trends = await getMonthlyTrends(userId);
+
+    return res.json({
+        status: 'success',
+        data: trends
+    })
 })
