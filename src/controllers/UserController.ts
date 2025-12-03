@@ -11,7 +11,12 @@ const register = asyncHandler(async (req: Request, res: Response, next: NextFunc
 
     if (!dto.success) {
         const msg = dto.error.issues[0].message
-
         throw new ValidationError(msg)
     }
+    const result = //service
+
+    return res.status(200).json({
+        status: 'success',
+        data: result
+    })
 })
