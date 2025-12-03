@@ -1,0 +1,13 @@
+{
+    "extends": "./tsconfig.json",
+    "compilerOptions": {
+        "sourceMap": false, // no heavy .map files in production
+        "noEmit": false // ensure JS build gets produced
+    },
+    "exclude": [
+        "src/**/*.test.ts",
+        "src/**/*.spec.ts",
+        "src/tests",
+        "node_modules"
+    ]
+}
