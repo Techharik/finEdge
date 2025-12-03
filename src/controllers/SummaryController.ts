@@ -27,7 +27,7 @@ export const getSummary = asyncHandler(async (req: Request, res: Response): Prom
     cacheService.set(cacheKey, summary, CACHE_TTL);
 
     res.status(200).json({
-        success: true,
+        status: 'success',
         data: summary,
         cached: false
     });
@@ -40,7 +40,19 @@ export const summaryTrends = asyncHandler(async (req: Request, res: Response) =>
     if (!userId) {
         throw new NotFoundError('userId not found')
     }
+    const cacheKey = `trends_${userId ?? 'all'}`;
+
+    const cached = cacheService.get<Summary>(cacheKey);
+    if (cached) {
+        res.status(200).json({
+            success: true,
+            data: cached,
+            cached: true
+        });
+        return;
+    }
     const trends = await getMonthlyTrends(userId);
+    cacheService.set(cacheKey, trends, CACHE_TTL);
 
     return res.json({
         status: 'success',
