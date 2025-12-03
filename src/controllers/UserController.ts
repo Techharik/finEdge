@@ -13,7 +13,7 @@ const register = asyncHandler(async (req: Request, res: Response, next: NextFunc
         const msg = dto.error.issues[0].message
         throw new ValidationError(msg)
     }
-    const result = //service
+    const result = 
 
     return res.status(200).json({
         status: 'success',

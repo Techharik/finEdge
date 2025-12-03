@@ -2,7 +2,7 @@ import bcrypt from "bcrypt"
 import { ConflictError } from "../utils/errorHandler";
 import { User } from "../types/schema";
 
-const registerUserService = async (data: any) => {
+export const registerUserService = async (data: any) => {
     const { name, email, password } = data;
 
     const existed = //find user based on email
