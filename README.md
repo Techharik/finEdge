@@ -1,8 +1,7 @@
 
 ```markdown
 # finEdge
-
-A TypeScript-based project built by **Techharik** — finEdge is (brief description of project’s purpose, see “What is finEdge?”).  
+finEdge is for maintaining a expense and income a financial tracker .  
 
 ## 📁 Project Structure
 
@@ -53,17 +52,16 @@ npm run start       # or `node build/index.js`, etc.
 
 ## 🎯 What is finEdge?
 
-> *Add a short description here.*
-> For example: “finEdge is a lightweight financial-data processing engine / a fintech backend skeleton / a monitoring tool / …” depending on what the repo implements.
->
-> (You should fill this section explaining the problem finEdge solves, its main features, and its intended use-case.)
+> *A inmemory persistance financial tracker.*
+> FinEdge is here to solve the expense and income tracker , it collects the data and store it in a json file `db.json` It has a minimal analytics features for calucation monthly expense and income and overall , filter options for data.
+>  
 
 ## 🛠️ Features
 
 * Written entirely in TypeScript.
-* Clean project structure (src, data, logs).
-* ⚙️ (Add whichever features are relevant — data ingestion, analysis, monitoring, API, etc.)
-* 📄 (If there are CLI tools, helper scripts, config support etc.)
+* In memory Persistance db added.
+* Logger abstraction is added.
+
 
 ## 📦 Installation & Usage
 
@@ -90,7 +88,8 @@ If you wish to contribute:
 
 * Fork the repo
 * Create a branch for your feature/fix
-* Submit a pull request
+* Submit a pull request.
+
 
 Please follow the code style and maintain TypeScript types / formatting.
 
