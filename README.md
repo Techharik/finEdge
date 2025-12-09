@@ -61,7 +61,12 @@ npm run start       # or `node build/index.js`, etc.
 * Written entirely in TypeScript.
 * In memory Persistance db added.
 * Logger abstraction is added.
-
+Advanced Capabilities:
+* Caching: In-memory caching for summary endpoints to improve performance.
+* Rate Limiting: Protection against abuse.
+* Validation: Robust input validation using zod.
+* Error Handling: Global error handling middleware.
+* Data Persistence: JSON file-based storage for simplicity and portability.
 
 ## 📦 Installation & Usage
 
